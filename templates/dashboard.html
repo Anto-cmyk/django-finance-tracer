@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+
+    <h2 class="text-3xl font-bold mb-6 text-center">Dashboard</h2>
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+        <div class="bg-white shadow rounded p-6 text-center">
+            <p class="text-gray-500 font-semibold">Balance</p>
+            <p class="text-2xl font-bold mt-2">{{ balance }}</p>
+        </div>
+
+        <div class="bg-green-100 shadow rounded p-6 text-center">
+            <p class="text-gray-500 font-semibold">Income</p>
+            <p class="text-green-600 text-2xl font-bold mt-2">{{ income }}</p>
+        </div>
+
+        <div class="bg-red-100 shadow rounded p-6 text-center">
+            <p class="text-gray-500 font-semibold">Expense</p>
+            <p class="text-red-600 text-2xl font-bold mt-2">{{ expense }}</p>
+        </div>
+
+    </div>
+
+    <!-- Transactions Table -->
+    <div class="bg-white shadow rounded p-4">
+        <h3 class="text-xl font-bold mb-4">Transactions</h3>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full border border-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-4 py-2 border-b">Amount</th>
+                        <th class="px-4 py-2 border-b">Type</th>
+                        <th class="px-4 py-2 border-b">Category</th>
+                        <th class="px-4 py-2 border-b">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in transactions %}
+                    <tr class="hover:bg-gray-100">
+                        <td class="px-4 py-2 border-b">{{ t.amount }}</td>
+                        <td class="px-4 py-2 border-b">{{ t.transaction_type }}</td>
+                        <td class="px-4 py-2 border-b">{{ t.category }}</td>
+                        <td class="px-4 py-2 border-b">{{ t.date }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="px-4 py-2 text-center text-gray-400">No transactions yet</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4 text-right">
+            <a href="/add/" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Add Transaction</a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

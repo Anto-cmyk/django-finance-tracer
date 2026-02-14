@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Finance Tracker{% endblock %}</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS (optional) -->
+ </head>
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="w-full bg-white shadow p-4 mb-6">
+        <div class="container mx-auto flex justify-between">
+            <div class="font-bold text-xl">Finance Tracker</div>
+            <div class="space-x-4">
+                <a href="/" class="text-blue-500 hover:underline">Dashboard</a>
+                <a href="/add/" class="text-blue-500 hover:underline">Add Transaction</a>
+                <a href="/logout/" class="text-red-500 hover:underline">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container mx-auto">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
